@@ -1,0 +1,125 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+        <title>Reaction Timer</title>
+        <style type="text/css">
+
+            body {
+                font-family: sans-serif;
+background-color:#bf16e5;
+            }
+
+            #shape {
+    background: red;
+    height: 100px;
+    position: relative;
+    width: 20px;
+  }
+  #shape:after {
+    background: black;
+    content: "";
+    height: 20px;
+    left: -40px;
+    position: absolute;
+    top: 40px;
+    width: 100px;
+  }
+            .bold {
+
+                font-weight: bold;
+            }
+            #quick{
+              height: 40px;
+              margin-top: -18px;
+            }
+            #time{
+              height: 40px;
+              margin-top: -18px;
+
+            }
+h1{
+  text-align: center;
+}
+        </style>
+    </head>
+    <body>
+<div class="alert alert-success" role="alert">
+  <h1><strong>Test Your Aim and Boost Up!</strong></h1>
+
+</div>
+<div id="quick" class="alert alert-info" role="alert">
+  <p>Click on the points as quickly as you can lobo!</p>
+
+</div>
+<div id="time" class="alert alert-danger" role="alert">
+  <p class="bold">Your time: <span id="timeTaken"></span></p>
+  <div id="shape" onmousedown="bleep.play()"></div>
+</div>
+
+        <script type="text/javascript">
+
+            var start = new Date().getTime();
+
+            function makeShapeAppear() {
+                var top = Math.random() * 400;
+
+                var left = Math.random() * 400;
+
+                var width = (Math.random() * 200) + 100;
+
+                document.getElementById("shape").style.backgroundColor = "black";
+
+                document.getElementById("shape").style.top = top + "px";
+
+                document.getElementById("shape").style.left = left + "px";
+
+                document.getElementById("shape").style.display = "block";
+
+                start = new Date().getTime();
+
+            }
+
+            function appearAfterDelay() {
+                setTimeout(makeShapeAppear,200);
+
+            }
+
+            appearAfterDelay();
+
+            document.getElementById("shape").onclick = function() {
+
+                document.getElementById("shape").style.display = "none";
+
+                var end = new Date().getTime();
+
+                var timeTaken = (end - start) / 1000;
+
+                document.getElementById("timeTaken").innerHTML = timeTaken + "s";
+                appearAfterDelay();
+
+            }
+
+          var bleep=new Audio();
+          bleep.src="gun.wav";
+
+
+        </script>
+
+
+        <!-- Optional JavaScript -->
+           <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    </body>
+
+</html>
